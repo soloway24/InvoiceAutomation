@@ -13,6 +13,10 @@ restrictions and requirements on saving such sensitive information.
 3. All JPA annotations for establishing relationships between entities are omitted - they are explained in comments instead.
 4. Entity annotations on entities are omitted in order not to cause compilation errors (not everything 
 is configured for entities).
-5. Repo, service and controller are omitted for Tariff. They should be designed as those of other entities that need
-CRUD operations.
+5. Repo, service and controller are omitted for Tariff and PaymentBankingInfo. They should be designed (if they need)
+as those of other entities that need CRUD operations.
 6. Validation of incoming parameters in methods is omitted.
+7. PayPal is only a one example of various payment platforms that can be used. 
+8. For Autowiring I'm using lombok and @RequiredArgsConstructor because Constructor Injection is better than 
+Field Injection as it doesn't use reflection, and it's much easier for a developer to notice that a class has too many
+dependencies when they use a Constructor with lots of parameters.

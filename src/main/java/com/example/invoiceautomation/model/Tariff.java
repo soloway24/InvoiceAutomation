@@ -18,7 +18,7 @@ public class Tariff {
     private Double price;
     // one Tariff to many InvoiceOperation
     private List<InvoiceOperation> invoiceOperations;
-
+    private PaymentBankingInfo bankingInfo;
     /*
     other Tariff fields
     *

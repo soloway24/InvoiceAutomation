@@ -1,13 +1,11 @@
 package com.example.invoiceautomation.model;
 
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
 
-@AllArgsConstructor
 @Getter
 @Setter
 public class Payment {
@@ -19,4 +17,15 @@ public class Payment {
     private PaymentStatus status;
     // or Instant or any other date/datetime class as needed
     private Date date;
+    private Double sum;
+
+    public Payment(InvoiceOperation invoiceOperation, PaymentStatus status, Date date) {
+        this.invoiceOperation = invoiceOperation;
+        this.status = status;
+        this.date = date;
+    }
+
+    /*
+    * when Payment is created the sum is calculated from the InvoiceOperation.
+    * */
 }

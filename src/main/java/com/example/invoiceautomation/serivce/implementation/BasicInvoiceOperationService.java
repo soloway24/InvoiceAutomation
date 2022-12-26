@@ -17,6 +17,11 @@ public class BasicInvoiceOperationService implements InvoiceOperationService {
         return invoiceOperationRepository.save(invoiceOperation);
     }
 
+    @Override
+    public InvoiceOperation getById(Long id) {
+        return invoiceOperationRepository.findById(id).orElseThrow(/* needs to throw a more specific exception + log */);
+    }
+
     /* rest of CRUD operations
      *
      *
