@@ -22,3 +22,5 @@ Field Injection as it doesn't use reflection, and it's much easier for a develop
 dependencies when they use a Constructor with lots of parameters.
 9. PayerBanService, repo and PayerBan entity are omitted. They are to be implemented the same way as those of other entities
 that need crud operations.
+10. All interface implementation names either start with "Basic" or with a specific prefix that explains what this 
+implementation refers to. For example, PaymentPlatformService and PayPalService for a specific payment platform PayPay. 
