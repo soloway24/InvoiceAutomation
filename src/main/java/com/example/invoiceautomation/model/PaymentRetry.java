@@ -5,19 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @AllArgsConstructor
 @Getter
 @Setter
-public class Payer {
+public class PaymentRetry {
 
     @Id
     private Long id;
-    private String name;
-    private String phone;
-    private String email;
+    // one to one
+    private Payment payment;
+    private int retries;
 
-    // one Payer to many InvoiceOperation
-    private List<InvoiceOperation> invoiceOperations;
 }

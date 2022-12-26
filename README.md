@@ -20,3 +20,5 @@ as those of other entities that need CRUD operations.
 8. For Autowiring I'm using lombok and @RequiredArgsConstructor because Constructor Injection is better than 
 Field Injection as it doesn't use reflection, and it's much easier for a developer to notice that a class has too many
 dependencies when they use a Constructor with lots of parameters.
+9. PayerBanService, repo and PayerBan entity are omitted. They are to be implemented the same way as those of other entities
+that need crud operations.

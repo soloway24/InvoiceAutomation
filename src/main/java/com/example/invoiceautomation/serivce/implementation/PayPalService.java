@@ -4,10 +4,16 @@ import com.example.invoiceautomation.model.Payment;
 import com.example.invoiceautomation.model.PaymentBankingInfo;
 import com.example.invoiceautomation.model.PaymentStatus;
 import com.example.invoiceautomation.serivce.PaymentPlatformService;
+import com.example.invoiceautomation.serivce.PaymentRetrier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class PayPalService implements PaymentPlatformService {
+
+    private final PaymentRetrier paymentRetrier;
+
 
     // @Async or any other option to make the method asynchronous
     @Override
@@ -28,8 +34,9 @@ public class PayPalService implements PaymentPlatformService {
             payment.setStatus(PaymentStatus.COMPLETED);
         } else {
             payment.setStatus(PaymentStatus.FAILED);
+            paymentRetrier.invokeRetry(payment, this);
             /*
-             * log, add to retrier, throw error
+             * throw error, log
              * */
         }
         return payment;

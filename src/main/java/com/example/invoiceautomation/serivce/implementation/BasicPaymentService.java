@@ -22,9 +22,12 @@ public class BasicPaymentService implements PaymentService {
     // later use @Qualifier or another option to autowire a bean by its name
     private final PaymentPlatformService paymentPlatformService;
 
+
     @Override
     public Payment create(Long invoiceOperationId) {
         InvoiceOperation invoiceOperation = invoiceOperationService.getById(invoiceOperationId);
+        // check if payerBanService.isBanned(invoiceOperation.getPayer()) -> if yes - then throw a
+        // specific error, handle it and send response to user (error message)
         Payment payment = new Payment(invoiceOperation, PaymentStatus.NEW, new Date());
         return paymentRepository.save(payment);
     }
